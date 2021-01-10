@@ -1,5 +1,5 @@
-// 1.Создать галерею ---done
-// 2. Когда рендерим галерею, вставить мелкие картинки ---
+// 1.Создать галерею
+// 2. Когда рендерим галерею, вставить мелкие картинки
 // 3. сделать делегирование по галерее
 // 4. Модальное окно
 
@@ -48,6 +48,11 @@ function imgsClick(event) {
   }
 }
 
+function attributes(src, alt) {
+  modalImgRef.src = src;
+  modalImgRef.alt = alt;
+}
+
 // закрытие
 closeBtnRef.addEventListener('click', closeFn);
 overlayRef.addEventListener('click', closeFn);
@@ -56,7 +61,6 @@ function closeFn(event) {
   modalRef.classList.remove('is-open');
 }
 
-function attributes(src, alt) {
-  modalImgRef.src = src;
-  modalImgRef.alt = alt;
-}
+// ДОДЕЛАТЬ:
+// 1) Esc fn
+// 2)Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
