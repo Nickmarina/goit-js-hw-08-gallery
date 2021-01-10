@@ -11,6 +11,8 @@ const overlayRef = document.querySelector('.lightbox__overlay');
 const modalImgRef = document.querySelector('.lightbox__image');
 const closeBtnRef = modalRef.querySelector('[data-action="close-lightbox"]');
 
+// разметка
+
 const items = imgs.map(item => {
   const li = document.createElement('li');
   li.classList.add('gallery__item');
@@ -52,17 +54,9 @@ overlayRef.addEventListener('click', closeFn);
 
 function closeFn(event) {
   modalRef.classList.remove('is-open');
-  // attributes('', '');
-  // window.removeEventListener('keydown', Esc);
 }
 
 function attributes(src, alt) {
   modalImgRef.src = src;
   modalImgRef.alt = alt;
 }
-
-// function Esc(event) {
-//   if (event.code === 'Escape') {
-//     closeModal();
-//   }
-// }
