@@ -1,5 +1,5 @@
-// 1.Создать галерею
-// 2. Когда рендерим галерею, вставить мелкие картинки
+// 1.Создать галерею ---done
+// 2. Когда рендерим галерею, вставить мелкие картинки ---
 // 3. сделать делегирование по галерее
 // 4. Модальное окно
 
@@ -29,3 +29,40 @@ const items = imgs.map(item => {
 });
 
 galleryRef.append(...items);
+
+// открытие
+let i;
+galleryRef.addEventListener('click', imgsClick);
+
+function imgsClick(event) {
+  event.preventDefault();
+  i = Number(event.target.dataset.index);
+  const imgSrc = event.target.dataset.source;
+  const imgAlt = event.target.alt;
+  attributes(imgSrc, imgAlt);
+  if (event.target.tagName === 'IMG') {
+    modalRef.classList.add('is-open');
+    window.addEventListener('keydown', Esc);
+  }
+}
+
+// закрытие
+closeBtnRef.addEventListener('click', closeFn);
+overlayRef.addEventListener('click', closeFn);
+
+function closeFn(event) {
+  modalRef.classList.remove('is-open');
+  // attributes('', '');
+  // window.removeEventListener('keydown', Esc);
+}
+
+function attributes(src, alt) {
+  modalImgRef.src = src;
+  modalImgRef.alt = alt;
+}
+
+// function Esc(event) {
+//   if (event.code === 'Escape') {
+//     closeModal();
+//   }
+// }
