@@ -32,19 +32,18 @@ const items = imgs.map(item => {
 
 galleryRef.append(...items);
 
-// открытие
-let i;
 galleryRef.addEventListener('click', imgsClick);
+closeBtnRef.addEventListener('click', closeFn);
+overlayRef.addEventListener('click', closeFn);
 
+// открытие
 function imgsClick(event) {
   event.preventDefault();
-  i = Number(event.target.dataset.index);
   const imgSrc = event.target.dataset.source;
   const imgAlt = event.target.alt;
   attributes(imgSrc, imgAlt);
   if (event.target.tagName === 'IMG') {
     modalRef.classList.add('is-open');
-    window.addEventListener('keydown', Esc);
   }
 }
 
@@ -54,13 +53,11 @@ function attributes(src, alt) {
 }
 
 // закрытие
-closeBtnRef.addEventListener('click', closeFn);
-overlayRef.addEventListener('click', closeFn);
-
 function closeFn(event) {
   modalRef.classList.remove('is-open');
+  attributes('', '');
 }
 
 // ДОДЕЛАТЬ:
-// 1) Esc fn
+// 1) Esc fn (не называть esc!!!!)
 // 2)Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
